@@ -33,7 +33,7 @@ public class DBHelper extends SQLiteOpenHelper {
     public List<String> readHistoryTbl() {
         SQLiteDatabase db = this.getReadableDatabase();
         List<String> historyList = new ArrayList<>();
-        Cursor cursor = db.rawQuery("SELECT * FROM " + TABLE_NAME, null);
+        Cursor cursor = db.rawQuery("SELECT * FROM " + TABLE_NAME + " ORDER BY " + COL_TIMESTAMP, null);
 
         if (cursor.moveToFirst()) {
             do {
@@ -49,6 +49,8 @@ public class DBHelper extends SQLiteOpenHelper {
         db.close();
         return historyList;
     }
+
+
 
 
     @Override
