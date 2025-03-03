@@ -58,7 +58,7 @@ public class HistoryActivity extends AppCompatActivity {
             public View getView(int position, View convertView, @NonNull ViewGroup parent) {
                 View view = super.getView(position, convertView, parent);
                 if (view instanceof TextView) {
-                    ((TextView) view).setTextColor(android.graphics.Color.parseColor("#121212"));
+                    ((TextView) view).setTextColor(android.graphics.Color.parseColor("#F5F5F5"));
                 }
                 return view;
             }
