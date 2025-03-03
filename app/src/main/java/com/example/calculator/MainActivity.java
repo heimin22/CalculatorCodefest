@@ -75,6 +75,7 @@ public class MainActivity extends AppCompatActivity {
         View.OnClickListener operatorClickListener = view -> {
             Button _button = (Button) view;
             String currentValue = currentView.getText().toString();
+            String buttonText = _button.getText().toString();
 
             if (currentValue.isEmpty()) return;
 
@@ -84,7 +85,18 @@ public class MainActivity extends AppCompatActivity {
                 return;
             }
 
-            String newValue = currentValue + _button.getText().toString();
+            if(lastChar == '%') return;
+
+            if (buttonText.equals(".")) {
+                String[] number = currentValue.split("[+\\-*()÷×]");
+                String lastNumber = number[number.length - 1];
+
+                if (lastNumber.contains(".")) {
+                    return;
+                }
+            }
+
+            String newValue = currentValue + buttonText;
             currentView.setText(newValue);
         };
 
@@ -120,14 +132,14 @@ public class MainActivity extends AppCompatActivity {
 
             char lastChar = currentValue.charAt(currentValue.length() - 1);
 
-            if ("*+-÷()×".indexOf(lastChar) != -1) {
+            if ("*+-÷()×.".indexOf(lastChar) != -1) {
                 Toast.makeText(this, "Invalid", Toast.LENGTH_SHORT).show();
                 return;
             }
 
             Expression expression = new Expression(currentValue);
             double result = expression.calculate();
-            String convertedResult = Double.toString(result);
+            String convertedResult = Double.toString(result).contains(".0") ? Integer.toString((int) result) : Double.toString(result);
 
             currentView.setText(convertedResult);
             answerView.setText(convertedResult);
@@ -159,26 +171,16 @@ public class MainActivity extends AppCompatActivity {
             Button _button = (Button) view;
             String currentValue = currentView.getText().toString();
             String newValue = currentValue + _button.getText().toString();
+            char lastChar = currentValue.charAt(currentValue.length() - 1);
+            if(lastChar == '%') return;
+
             currentView.setText(newValue);
-            PerformEval();
+
         };
 
         for (int id : numberIds)
         {
             findViewById(id).setOnClickListener(numberClickListener);
-        }
-    }
-
-    private void PerformEval()
-    {
-        currentValue = currentView.getText().toString();
-
-        if(currentValue.contains("+\\-\\*\\×\\÷\\(\\)"))
-        {
-            Expression expression = new Expression(currentValue);
-            int result = (int) expression.calculate();
-
-            answerView.setText(result);
         }
     }
 }
