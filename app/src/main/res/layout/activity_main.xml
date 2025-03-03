@@ -7,5 +7,34 @@
     android:layout_height="match_parent"
     tools:context=".MainActivity">
 
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/keypadGuideline"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintGuide_percent=".35"
+        android:orientation="horizontal"/>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/keypadContainer"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:background="@color/backgroundColor"
+        app:layout_constraintTop_toTopOf="@+id/keypadGuideline"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent">
+
+<!--        <GridLayout-->
+<!--            android:id="@+id/keypadGrid"-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:backgroundTint=""-->
+<!--            >-->
+
+
+<!--        </GridLayout>-->
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
