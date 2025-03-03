@@ -24,15 +24,62 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintBottom_toBottomOf="parent">
 
-<!--        <GridLayout-->
-<!--            android:id="@+id/keypadGrid"-->
-<!--            android:layout_width="match_parent"-->
-<!--            android:layout_height="wrap_content"-->
-<!--            android:backgroundTint=""-->
-<!--            >-->
+        <GridLayout
+            android:id="@+id/keypadGrid"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:rowCount="4"
+            android:columnCount="4"
+            android:useDefaultMargins="true"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent">
+
+            <Button
+                tools:ignore="HardcodedText"
+                android:id="@+id/clearButton"
+                android:text="AC"
+                android:textSize="20sp"
+                android:textAllCaps="false"
+                android:layout_columnWeight="1"
+                android:layout_rowWeight="3"
+                android:layout_gravity="fill"
+                android:minHeight="80dp"
+                android:backgroundTint="@color/buttonColor"
+                android:background="@drawable/button_color" />
+
+            <Button
+                tools:ignore="HardcodedText"
+                android:id="@+id/parenthesisButton"
+                android:text="()"
+                android:textSize="20sp"
+                android:textAllCaps="false"
+                android:layout_columnWeight="1"
+                android:layout_rowWeight="3"
+                android:backgroundTint="@drawable/button_color"/>
+
+            <Button
+                tools:ignore="HardcodedText"
+                android:id="@+id/percentButton"
+                android:text="%"
+                android:textSize="20sp"
+                android:textAllCaps="false"
+                android:layout_columnWeight="1"
+                android:layout_rowWeight="3"
+                android:backgroundTint="@drawable/button_color"/>
+
+            <Button
+                tools:ignore="HardcodedText"
+                android:id="@+id/divideButton"
+                android:text="/"
+                android:textSize="20sp"
+                android:textAllCaps="false"
+                android:layout_columnWeight="1"
+                android:layout_rowWeight="3"
+                android:backgroundTint="@drawable/button_color"/>
 
 
-<!--        </GridLayout>-->
+        </GridLayout>
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>
