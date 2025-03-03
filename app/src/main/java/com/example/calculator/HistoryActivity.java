@@ -1,9 +1,11 @@
 package com.example.calculator;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
+import android.widget.ImageButton;
 import android.widget.ListView;
 import android.widget.TextView;
 
@@ -21,6 +23,7 @@ import java.util.List;
 public class HistoryActivity extends AppCompatActivity {
     ListView historyListView;
     DBHelper dbHelper;
+    ImageButton backBtn;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,8 +36,17 @@ public class HistoryActivity extends AppCompatActivity {
             return insets;
         });
 
-//        InitializeComponents();
+        InitializeComponents();
         DisplayHistory();
+
+        backBtn = findViewById(R.id.backButton);
+        backBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(HistoryActivity.this, MainActivity.class);
+                startActivity(intent);
+            }
+        });
     }
 
     private void DisplayHistory()
@@ -55,9 +67,9 @@ public class HistoryActivity extends AppCompatActivity {
         historyListView.setAdapter(adapter);
     }
 
-//    private void InitializeComponents()
-//    {
-//        historyListView = findViewById(R.id.historyList);
-//        dbHelper = new DBHelper(this);
-//    }
+    private void InitializeComponents()
+    {
+        historyListView = findViewById(R.id.historyList);
+        dbHelper = new DBHelper(this);
+    }
 }
