@@ -114,9 +114,12 @@ public class MainActivity extends AppCompatActivity {
     private void InitializeSpecialButtons()
     {
         historyBtn = findViewById(R.id.historyButton);
-        historyBtn.setOnClickListener(view -> {
-            Intent intent = new Intent(MainActivity.this, HistoryActivity.class);
-            startActivity(intent);
+        historyBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(MainActivity.this, HistoryActivity.class);
+                startActivity(intent);
+            }
         });
 
         clearBtn = findViewById(R.id.clearButton);
