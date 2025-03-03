@@ -38,11 +38,12 @@
         android:layout_height="wrap_content"
         app:layout_constraintStart_toStartOf="@+id/historyStartGuideline"
         app:layout_constraintTop_toTopOf="parent"
-
-        android:layout_marginTop="30dp">
+        android:layout_marginStart="5dp"
+        android:layout_marginTop="35dp">
 
         <ImageButton
             android:id="@+id/historyButton"
+            android:padding="0dp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             app:layout_constraintTop_toTopOf="parent"
