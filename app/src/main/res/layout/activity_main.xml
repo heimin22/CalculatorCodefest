@@ -45,18 +45,23 @@
                 android:layout_rowWeight="3"
                 android:layout_gravity="fill"
                 android:minHeight="80dp"
-                android:backgroundTint="@color/buttonColor"
+                android:textColor="@color/white"
+                app:backgroundTint="@color/buttonColor"
                 android:background="@drawable/button_color" />
 
             <Button
                 tools:ignore="HardcodedText"
                 android:id="@+id/parenthesisButton"
-                android:text="()"
+                android:text="( )"
                 android:textSize="20sp"
                 android:textAllCaps="false"
                 android:layout_columnWeight="1"
                 android:layout_rowWeight="3"
-                android:backgroundTint="@drawable/button_color"/>
+                android:layout_gravity="fill"
+                android:minHeight="80dp"
+                android:textColor="@color/white"
+                app:backgroundTint="@color/buttonColor"
+                android:background="@drawable/button_color" />
 
             <Button
                 tools:ignore="HardcodedText"
@@ -66,17 +71,249 @@
                 android:textAllCaps="false"
                 android:layout_columnWeight="1"
                 android:layout_rowWeight="3"
-                android:backgroundTint="@drawable/button_color"/>
+                android:layout_gravity="fill"
+                android:minHeight="80dp"
+                android:textColor="@color/white"
+                app:backgroundTint="@color/buttonColor"
+                android:background="@drawable/button_color" />
 
             <Button
                 tools:ignore="HardcodedText"
                 android:id="@+id/divideButton"
-                android:text="/"
+                android:text="÷"
                 android:textSize="20sp"
                 android:textAllCaps="false"
                 android:layout_columnWeight="1"
                 android:layout_rowWeight="3"
-                android:backgroundTint="@drawable/button_color"/>
+                android:layout_gravity="fill"
+                android:minHeight="80dp"
+                android:textColor="@color/white"
+                app:backgroundTint="@color/buttonColor"
+                android:background="@drawable/button_color" />
+
+            <Button
+                tools:ignore="HardcodedText"
+                android:id="@+id/sevenButton"
+                android:text="7"
+                android:textSize="20sp"
+                android:textAllCaps="false"
+                android:layout_columnWeight="1"
+                android:layout_rowWeight="3"
+                android:layout_gravity="fill"
+                android:minHeight="80dp"
+                android:textColor="@color/white"
+                app:backgroundTint="@color/buttonColor"
+                android:background="@drawable/button_color" />
+
+            <Button
+                tools:ignore="HardcodedText"
+                android:id="@+id/eightButton"
+                android:text="8"
+                android:textSize="20sp"
+                android:textAllCaps="false"
+                android:layout_columnWeight="1"
+                android:layout_rowWeight="3"
+                android:layout_gravity="fill"
+                android:minHeight="80dp"
+                android:textColor="@color/white"
+                app:backgroundTint="@color/buttonColor"
+                android:background="@drawable/button_color" />
+
+
+            <Button
+                tools:ignore="HardcodedText"
+                android:id="@+id/nineButton"
+                android:text="9"
+                android:textSize="20sp"
+                android:textAllCaps="false"
+                android:layout_columnWeight="1"
+                android:layout_rowWeight="3"
+                android:layout_gravity="fill"
+                android:minHeight="80dp"
+                android:textColor="@color/white"
+                app:backgroundTint="@color/buttonColor"
+                android:background="@drawable/button_color" />
+
+            <Button
+                tools:ignore="HardcodedText"
+                android:id="@+id/multiplyButton"
+                android:text="×"
+                android:textSize="20sp"
+                android:textAllCaps="false"
+                android:layout_columnWeight="1"
+                android:layout_rowWeight="3"
+                android:layout_gravity="fill"
+                android:minHeight="80dp"
+                android:textColor="@color/white"
+                app:backgroundTint="@color/buttonColor"
+                android:background="@drawable/button_color" />
+
+            <Button
+                tools:ignore="HardcodedText"
+                android:id="@+id/fourButton"
+                android:text="4"
+                android:textSize="20sp"
+                android:textAllCaps="false"
+                android:layout_columnWeight="1"
+                android:layout_rowWeight="3"
+                android:layout_gravity="fill"
+                android:minHeight="80dp"
+                android:textColor="@color/white"
+                app:backgroundTint="@color/buttonColor"
+                android:background="@drawable/button_color" />
+
+            <Button
+                tools:ignore="HardcodedText"
+                android:id="@+id/fiveButton"
+                android:text="5"
+                android:textSize="20sp"
+                android:textAllCaps="false"
+                android:layout_columnWeight="1"
+                android:layout_rowWeight="3"
+                android:layout_gravity="fill"
+                android:minHeight="80dp"
+                android:textColor="@color/white"
+                app:backgroundTint="@color/buttonColor"
+                android:background="@drawable/button_color" />
+
+            <Button
+                tools:ignore="HardcodedText"
+                android:id="@+id/sixButton"
+                android:text="6"
+                android:textSize="20sp"
+                android:textAllCaps="false"
+                android:layout_columnWeight="1"
+                android:layout_rowWeight="3"
+                android:layout_gravity="fill"
+                android:minHeight="80dp"
+                android:textColor="@color/white"
+                app:backgroundTint="@color/buttonColor"
+                android:background="@drawable/button_color" />
+
+            <Button
+                tools:ignore="HardcodedText"
+                android:id="@+id/minusButton"
+                android:text="-"
+                android:textSize="20sp"
+                android:textAllCaps="false"
+                android:layout_columnWeight="1"
+                android:layout_rowWeight="3"
+                android:layout_gravity="fill"
+                android:minHeight="80dp"
+                android:textColor="@color/white"
+                app:backgroundTint="@color/buttonColor"
+                android:background="@drawable/button_color" />
+
+            <Button
+                tools:ignore="HardcodedText"
+                android:id="@+id/oneButton"
+                android:text="1"
+                android:textSize="20sp"
+                android:textAllCaps="false"
+                android:layout_columnWeight="1"
+                android:layout_rowWeight="3"
+                android:layout_gravity="fill"
+                android:minHeight="80dp"
+                android:textColor="@color/white"
+                app:backgroundTint="@color/buttonColor"
+                android:background="@drawable/button_color" />
+
+            <Button
+                tools:ignore="HardcodedText"
+                android:id="@+id/twoButton"
+                android:text="2"
+                android:textSize="20sp"
+                android:textAllCaps="false"
+                android:layout_columnWeight="1"
+                android:layout_rowWeight="3"
+                android:layout_gravity="fill"
+                android:minHeight="80dp"
+                android:textColor="@color/white"
+                app:backgroundTint="@color/buttonColor"
+                android:background="@drawable/button_color" />
+
+            <Button
+                tools:ignore="HardcodedText"
+                android:id="@+id/threeButton"
+                android:text="3"
+                android:textSize="20sp"
+                android:textAllCaps="false"
+                android:layout_columnWeight="1"
+                android:layout_rowWeight="3"
+                android:layout_gravity="fill"
+                android:minHeight="80dp"
+                android:textColor="@color/white"
+                app:backgroundTint="@color/buttonColor"
+                android:background="@drawable/button_color" />
+
+            <Button
+                tools:ignore="HardcodedText"
+                android:id="@+id/addButton"
+                android:text="+"
+                android:textSize="20sp"
+                android:textAllCaps="false"
+                android:layout_columnWeight="1"
+                android:layout_rowWeight="3"
+                android:layout_gravity="fill"
+                android:minHeight="80dp"
+                android:textColor="@color/white"
+                app:backgroundTint="@color/buttonColor"
+                android:background="@drawable/button_color" />
+
+            <Button
+                tools:ignore="HardcodedText"
+                android:id="@+id/zeroButton"
+                android:text="0"
+                android:textSize="20sp"
+                android:textAllCaps="false"
+                android:layout_columnWeight="1"
+                android:layout_rowWeight="3"
+                android:layout_gravity="fill"
+                android:minHeight="80dp"
+                android:textColor="@color/white"
+                app:backgroundTint="@color/buttonColor"
+                android:background="@drawable/button_color" />
+
+            <Button
+                tools:ignore="HardcodedText"
+                android:id="@+id/decimalButton"
+                android:text="."
+                android:textSize="20sp"
+                android:textAllCaps="false"
+                android:layout_columnWeight="1"
+                android:layout_rowWeight="3"
+                android:layout_gravity="fill"
+                android:minHeight="80dp"
+                android:textColor="@color/white"
+                app:backgroundTint="@color/buttonColor"
+                android:background="@drawable/button_color" />
+
+            <Button
+                tools:ignore="HardcodedText"
+                android:id="@+id/deleteButton"
+                android:text="DEL"
+                android:textSize="20sp"
+                android:textAllCaps="false"
+                android:layout_columnWeight="1"
+                android:layout_rowWeight="3"
+                android:layout_gravity="fill"
+                android:minHeight="80dp"
+                android:textColor="@color/white"
+                app:backgroundTint="@color/buttonColor"
+                android:background="@drawable/button_color" />
+
+            <Button
+                tools:ignore="HardcodedText"
+                android:id="@+id/equalButton"
+                android:text="="
+                android:textSize="20sp"
+                android:textAllCaps="false"
+                android:layout_columnWeight="1"
+                android:layout_rowWeight="3"
+                android:layout_gravity="fill"
+                android:minHeight="80dp"
+                android:backgroundTint="@color/buttonColor"
+                android:background="@drawable/button_color" />
 
 
         </GridLayout>
