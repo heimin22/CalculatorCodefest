@@ -13,8 +13,12 @@ import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
 public class MainActivity extends AppCompatActivity {
-    Button historyBtn, clearBtn, equalsBtn;
-    TextView displayView;
+    ScriptEngineManager mgr;
+    ScriptEngine engine;
+
+    // special buttons
+    Button historyBtn, clearBtn, equalsBtn, delBtn;
+    TextView currentView, prevView, answerView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -26,7 +30,8 @@ public class MainActivity extends AppCompatActivity {
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
             return insets;
         });
-
+        mgr = new ScriptEngineManager();
+        engine = mgr.getEngineByName("JavaScript");
         InitializeComponents();
     }
 
@@ -37,7 +42,37 @@ public class MainActivity extends AppCompatActivity {
     {
         InitializeNumberButtons();
         InitializeSpecialButtons();
+        InitializeOperatorButtons();
     }
+
+    /**
+     * set each on click listener for operators
+     * */
+    private void InitializeOperatorButtons() {
+        int[] operatorIds = {
+                R.id.multiplyBtn, R.id.addBtn, R.id.subtractBtn, R.id.divideBtn
+        };
+
+        View.OnClickListener operatorClickListener = view -> {
+            Button _button = (Button) view;
+            String currentValue = currentView.getText().toString();
+
+            if (currentValue.isEmpty()) return;
+
+            char lastChar = currentValue.charAt(currentValue.length() - 1);
+
+            if ("*+-/x".indexOf(lastChar) != -1) {
+                return;
+            }
+
+            currentView.setText(_button.getText().toString());
+        };
+
+        for (int id : operatorIds) {
+            findViewById(id).setOnClickListener(operatorClickListener);
+        }
+    }
+
 
     /**
      * set each on click listener for special buttons
@@ -55,12 +90,34 @@ public class MainActivity extends AppCompatActivity {
 
         clearBtn = findViewById(R.id.clearButton);
         clearBtn.setOnClickListener(view -> {
-            // TODO: clear display view
+            currentView.setText("");
+            prevView.setText("");
         });
 
         equalsBtn = findViewById(R.id.equalsButton);
         equalsBtn.setOnClickListener(view -> {
-            // TODO: evaluate
+            String currentValue = currentView.getText().toString();
+            if(currentValue.isEmpty()) return;
+
+            char lastChar = currentValue.charAt(currentValue.length() - 1);
+
+            if ("*+-/x".indexOf(lastChar) != -1) return;
+
+            prevView.setText(currentValue);
+            currentView.setText("");
+
+            String answerValue = engine.eval(currentValue);
+            answerView.setText(answerValue);
+
+        });
+
+        delBtn = findViewById(R.id.delBtn);
+        delBtn.setOnClickListener(view -> {
+            String currentValue = currentView.getText().toString();
+            if(currentValue.isEmpty()) return;
+
+            String newValue = currentValue.substring(0, currentValue.length() - 1);
+            currentView.setText(newValue);
         });
     }
 
@@ -76,8 +133,9 @@ public class MainActivity extends AppCompatActivity {
 
         View.OnClickListener numberClickListener = view -> {
             Button _button = (Button) view;
-            String currentValue = displayView.getText().toString();
-            displayView.setText(currentValue + _button.getText());
+            String currentValue = currentView.getText().toString();
+            String newValue = currentValue + _button.getText().toString();
+            currentView.setText(newValue);
         };
 
         for (int id : numberIds)
