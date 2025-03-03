@@ -4,7 +4,14 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.TextView;
+import javax.script.ScriptEngine;
+import javax.script.ScriptEngineManager;
+import com.example.calculator.DBHelper;
+import com.example.calculator.HistoryActivity;
+import com.example.calculator.R;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
@@ -12,14 +19,19 @@ import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
+import org.mozilla.javascript.Context;
+import org.mozilla.javascript.Scriptable;
+
 public class MainActivity extends AppCompatActivity {
     ScriptEngineManager mgr;
     ScriptEngine engine;
     DBHelper dbHelper;
 
     // special buttons
-    Button historyBtn, clearBtn, equalsBtn, delBtn;
-    TextView currentView, prevView, answerView;
+    ImageButton historyBtn;
+    Button clearBtn, equalsBtn, delBtn;
+    EditText currentView;
+    TextView answerView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -32,7 +44,10 @@ public class MainActivity extends AppCompatActivity {
             return insets;
         });
         mgr = new ScriptEngineManager();
-        engine = mgr.getEngineByName("JavaScript");
+        engine = mgr.getEngineByName("rhino");
+        currentView = findViewById(R.id.expression);
+        answerView = findViewById(R.id.result);
+
         InitializeComponents();
     }
 
@@ -52,7 +67,7 @@ public class MainActivity extends AppCompatActivity {
      * */
     private void InitializeOperatorButtons() {
         int[] operatorIds = {
-                R.id.multiplyBtn, R.id.addBtn, R.id.subtractBtn, R.id.divideBtn
+                R.id.multiplyButton, R.id.addButton, R.id.minusButton, R.id.divideButton
         };
 
         View.OnClickListener operatorClickListener = view -> {
@@ -93,7 +108,6 @@ public class MainActivity extends AppCompatActivity {
         clearBtn = findViewById(R.id.clearButton);
         clearBtn.setOnClickListener(view -> {
             currentView.setText("");
-            prevView.setText("");
         });
 
         equalsBtn = findViewById(R.id.equalsButton);
@@ -105,16 +119,18 @@ public class MainActivity extends AppCompatActivity {
 
             if ("*+-/x".indexOf(lastChar) != -1) return;
 
-            prevView.setText(currentValue);
             currentView.setText("");
 
-            String answerValue = engine.eval(currentValue);
+            Context context = Context.enter();
+            Scriptable scope = context.initStandardObjects();
+            Object result = context.evaluateString(scope, "18 > 17 and 18 < 100", "<cmd>", 1, null);
+            String answerValue = String.valueOf(result);
             answerView.setText(answerValue);
 
             dbHelper.addToTable(currentValue, answerValue);
         });
 
-        delBtn = findViewById(R.id.delBtn);
+        delBtn = findViewById(R.id.deleteButton);
         delBtn.setOnClickListener(view -> {
             String currentValue = currentView.getText().toString();
             if(currentValue.isEmpty()) return;
@@ -129,9 +145,11 @@ public class MainActivity extends AppCompatActivity {
      * */
     private void InitializeNumberButtons()
     {
+        int cursorPosition = currentView.getSelectionStart();
+
         int[] numberIds = {
-                R.id.button0, R.id.button1, R.id.button2, R.id.button3, R.id.button4, R.id.button5,
-                R.id.button6, R.id.button7, R.id.button8, R.id.button9
+                R.id.zeroButton, R.id.oneButton, R.id.twoButton, R.id.threeButton, R.id.fourButton, R.id.fiveButton,
+                R.id.sixButton, R.id.sevenButton, R.id.eightButton, R.id.nineButton
         };
 
         View.OnClickListener numberClickListener = view -> {

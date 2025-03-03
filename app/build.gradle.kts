@@ -32,7 +32,8 @@ android {
 }
 
 dependencies {
-
+    implementation(libs.js.scriptengine)
+    implementation(libs.rhino.android)
     implementation(libs.appcompat)
     implementation(libs.material)
     implementation(libs.activity)

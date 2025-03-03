@@ -33,7 +33,7 @@ public class HistoryActivity extends AppCompatActivity {
             return insets;
         });
 
-        InitializeComponents();
+//        InitializeComponents();
         DisplayHistory();
     }
 
@@ -55,9 +55,9 @@ public class HistoryActivity extends AppCompatActivity {
         historyListView.setAdapter(adapter);
     }
 
-    private void InitializeComponents()
-    {
-        historyListView = findViewById(R.id.historyList);
-        dbHelper = new DBHelper(this);
-    }
+//    private void InitializeComponents()
+//    {
+//        historyListView = findViewById(R.id.historyList);
+//        dbHelper = new DBHelper(this);
+//    }
 }
