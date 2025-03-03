@@ -8,6 +8,7 @@
     tools:context=".HistoryActivity">
 
     <!-- Guidelines -->
+
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/backButtonGuideline"
         android:layout_width="wrap_content"
