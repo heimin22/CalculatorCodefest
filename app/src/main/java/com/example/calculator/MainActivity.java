@@ -15,6 +15,7 @@ import androidx.core.view.WindowInsetsCompat;
 public class MainActivity extends AppCompatActivity {
     ScriptEngineManager mgr;
     ScriptEngine engine;
+    DBHelper dbHelper;
 
     // special buttons
     Button historyBtn, clearBtn, equalsBtn, delBtn;
@@ -43,6 +44,7 @@ public class MainActivity extends AppCompatActivity {
         InitializeNumberButtons();
         InitializeSpecialButtons();
         InitializeOperatorButtons();
+        dbHelper = new DBHelper(this);
     }
 
     /**
@@ -109,6 +111,7 @@ public class MainActivity extends AppCompatActivity {
             String answerValue = engine.eval(currentValue);
             answerView.setText(answerValue);
 
+            dbHelper.addToTable(currentValue, answerValue);
         });
 
         delBtn = findViewById(R.id.delBtn);
