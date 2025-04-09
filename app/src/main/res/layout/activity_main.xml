@@ -38,11 +38,12 @@
         android:layout_height="wrap_content"
         app:layout_constraintStart_toStartOf="@+id/historyStartGuideline"
         app:layout_constraintTop_toTopOf="parent"
-
-        android:layout_marginTop="30dp">
+        android:layout_marginStart="5dp"
+        android:layout_marginTop="35dp">
 
         <ImageButton
             android:id="@+id/historyButton"
+            android:padding="0dp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             app:layout_constraintTop_toTopOf="parent"
@@ -68,19 +69,22 @@
         app:layout_constraintBottom_toTopOf="@+id/expressionGuideline">
 
         <EditText
-            tools:ignore="HardcodedText"
+            android:maxLength="10"
+            android:textAlignment="textEnd"
             android:id="@+id/expression"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintBottom_toBottomOf="parent"
-            android:text=" "
-            android:includeFontPadding="false"
             android:fontFamily="@font/inter_light"
+            android:includeFontPadding="false"
+            android:text=" "
+            android:textColor="@color/white"
             android:textSize="60sp"
             android:inputType="none"
-            android:textColor="@color/white" />
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:ignore="HardcodedText" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -98,7 +102,7 @@
         android:layout_marginEnd="20dp">
 
         <TextView
-            android:id="@+id/resultTextView"
+            android:id="@+id/result"
             tools:ignore="HardcodedText"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -142,7 +146,7 @@
                 tools:ignore="HardcodedText"
                 android:id="@+id/clearButton"
                 android:text="AC"
-                android:textSize="30sp"
+                android:textSize="25sp"
                 android:textAllCaps="false"
                 android:layout_columnWeight="1"
                 android:layout_rowWeight="3"
@@ -151,7 +155,9 @@
                 android:textColor="@color/white"
                 app:backgroundTint="@color/clearColor"
                 android:fontFamily="@font/inter_medium"
-                android:background="@drawable/button_color" />
+                android:background="@drawable/button_color"
+                android:layout_height="80dp"
+                android:layout_width="80dp"/>
 
             <Button
                 tools:ignore="HardcodedText"
@@ -166,7 +172,9 @@
                 android:textColor="@color/clearColor"
                 app:backgroundTint="@color/operatorColor"
                 android:fontFamily="@font/inter_medium"
-                android:background="@drawable/button_color" />
+                android:background="@drawable/button_color"
+                android:layout_height="80dp"
+                android:layout_width="80dp"/>
 
             <Button
                 tools:ignore="HardcodedText"
@@ -181,7 +189,9 @@
                 android:textColor="@color/clearColor"
                 app:backgroundTint="@color/operatorColor"
                 android:fontFamily="@font/inter_medium"
-                android:background="@drawable/button_color" />
+                android:background="@drawable/button_color"
+                android:layout_height="80dp"
+                android:layout_width="80dp"/>
 
             <Button
                 tools:ignore="HardcodedText"
@@ -196,7 +206,9 @@
                 android:textColor="@color/clearColor"
                 app:backgroundTint="@color/operatorColor"
                 android:fontFamily="@font/inter_medium"
-                android:background="@drawable/button_color" />
+                android:background="@drawable/button_color"
+                android:layout_height="80dp"
+                android:layout_width="80dp"/>
 
             <Button
                 tools:ignore="HardcodedText"
@@ -211,7 +223,9 @@
                 android:minHeight="80dp"
                 android:textColor="@color/white"
                 app:backgroundTint="@color/buttonColor"
-                android:background="@drawable/button_color" />
+                android:background="@drawable/button_color"
+                android:layout_height="80dp"
+                android:layout_width="80dp"/>
 
             <Button
                 tools:ignore="HardcodedText"
@@ -226,7 +240,9 @@
                 android:minHeight="80dp"
                 android:textColor="@color/white"
                 app:backgroundTint="@color/buttonColor"
-                android:background="@drawable/button_color" />
+                android:background="@drawable/button_color"
+                android:layout_height="80dp"
+                android:layout_width="80dp"/>
 
 
             <Button
@@ -242,7 +258,9 @@
                 android:minHeight="80dp"
                 android:textColor="@color/white"
                 app:backgroundTint="@color/buttonColor"
-                android:background="@drawable/button_color" />
+                android:background="@drawable/button_color"
+                android:layout_height="80dp"
+                android:layout_width="80dp"/>
 
             <Button
                 tools:ignore="HardcodedText"
@@ -257,7 +275,9 @@
                 android:textColor="@color/clearColor"
                 app:backgroundTint="@color/operatorColor"
                 android:fontFamily="@font/inter_medium"
-                android:background="@drawable/button_color" />
+                android:background="@drawable/button_color"
+                android:layout_height="80dp"
+                android:layout_width="80dp"/>
 
             <Button
                 tools:ignore="HardcodedText"
@@ -272,7 +292,9 @@
                 android:minHeight="80dp"
                 android:textColor="@color/white"
                 app:backgroundTint="@color/buttonColor"
-                android:background="@drawable/button_color" />
+                android:background="@drawable/button_color"
+                android:layout_height="80dp"
+                android:layout_width="80dp"/>
 
             <Button
                 tools:ignore="HardcodedText"
@@ -287,7 +309,9 @@
                 android:minHeight="80dp"
                 android:textColor="@color/white"
                 app:backgroundTint="@color/buttonColor"
-                android:background="@drawable/button_color" />
+                android:background="@drawable/button_color"
+                android:layout_height="80dp"
+                android:layout_width="80dp"/>
 
             <Button
                 tools:ignore="HardcodedText"
@@ -302,7 +326,9 @@
                 android:minHeight="80dp"
                 android:textColor="@color/white"
                 app:backgroundTint="@color/buttonColor"
-                android:background="@drawable/button_color" />
+                android:background="@drawable/button_color"
+                android:layout_height="80dp"
+                android:layout_width="80dp"/>
 
             <Button
                 tools:ignore="HardcodedText"
@@ -317,7 +343,9 @@
                 android:textColor="@color/clearColor"
                 app:backgroundTint="@color/operatorColor"
                 android:fontFamily="@font/inter_medium"
-                android:background="@drawable/button_color" />
+                android:background="@drawable/button_color"
+                android:layout_height="80dp"
+                android:layout_width="80dp"/>
 
             <Button
                 tools:ignore="HardcodedText"
@@ -332,7 +360,9 @@
                 android:minHeight="80dp"
                 android:textColor="@color/white"
                 app:backgroundTint="@color/buttonColor"
-                android:background="@drawable/button_color" />
+                android:background="@drawable/button_color"
+                android:layout_height="80dp"
+                android:layout_width="80dp"/>
 
             <Button
                 tools:ignore="HardcodedText"
@@ -347,7 +377,9 @@
                 android:minHeight="80dp"
                 android:textColor="@color/white"
                 app:backgroundTint="@color/buttonColor"
-                android:background="@drawable/button_color" />
+                android:background="@drawable/button_color"
+                android:layout_height="80dp"
+                android:layout_width="80dp"/>
 
             <Button
                 tools:ignore="HardcodedText"
@@ -362,7 +394,9 @@
                 android:minHeight="80dp"
                 android:textColor="@color/white"
                 app:backgroundTint="@color/buttonColor"
-                android:background="@drawable/button_color" />
+                android:background="@drawable/button_color"
+                android:layout_height="80dp"
+                android:layout_width="80dp"/>
 
             <Button
                 tools:ignore="HardcodedText"
@@ -377,7 +411,9 @@
                 android:textColor="@color/clearColor"
                 app:backgroundTint="@color/operatorColor"
                 android:fontFamily="@font/inter_medium"
-                android:background="@drawable/button_color" />
+                android:background="@drawable/button_color"
+                android:layout_height="80dp"
+                android:layout_width="80dp"/>
 
             <Button
                 tools:ignore="HardcodedText"
@@ -392,7 +428,9 @@
                 android:minHeight="80dp"
                 android:textColor="@color/white"
                 app:backgroundTint="@color/buttonColor"
-                android:background="@drawable/button_color" />
+                android:background="@drawable/button_color"
+                android:layout_height="80dp"
+                android:layout_width="80dp"/>
 
             <Button
                 tools:ignore="HardcodedText"
@@ -407,13 +445,15 @@
                 android:minHeight="80dp"
                 android:textColor="@color/white"
                 app:backgroundTint="@color/buttonColor"
-                android:background="@drawable/button_color" />
+                android:background="@drawable/button_color"
+                android:layout_height="80dp"
+                android:layout_width="80dp"/>
 
             <Button
                 tools:ignore="HardcodedText"
                 android:id="@+id/deleteButton"
                 android:text="DEL"
-                android:textSize="25sp"
+                android:textSize="20sp"
                 android:fontFamily="@font/inter_medium"
                 android:textAllCaps="false"
                 android:layout_columnWeight="1"
@@ -422,11 +462,13 @@
                 android:minHeight="80dp"
                 android:textColor="@color/white"
                 app:backgroundTint="@color/buttonColor"
-                android:background="@drawable/button_color" />
+                android:background="@drawable/button_color"
+                android:layout_height="80dp"
+                android:layout_width="80dp"/>
 
             <Button
                 tools:ignore="HardcodedText"
-                android:id="@+id/equalButton"
+                android:id="@+id/equalsButton"
                 android:text="="
                 android:textSize="30sp"
                 android:fontFamily="@font/inter_medium"
@@ -436,7 +478,9 @@
                 android:layout_gravity="fill"
                 android:minHeight="80dp"
                 app:backgroundTint="@color/clearColor"
-                android:background="@drawable/button_color" />
+                android:background="@drawable/button_color"
+                android:layout_height="80dp"
+                android:layout_width="80dp"/>
 
         </GridLayout>
 
