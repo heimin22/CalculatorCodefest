@@ -7,11 +7,12 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.TextView;
+import android.widget.Toast;
+
 import javax.script.ScriptEngine;
 import javax.script.ScriptEngineManager;
 import com.example.calculator.DBHelper;
 import com.example.calculator.HistoryActivity;
-import com.example.calculator.R;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
@@ -19,8 +20,7 @@ import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
-import org.mozilla.javascript.Context;
-import org.mozilla.javascript.Scriptable;
+import org.mariuszgromada.math.mxparser.*;
 
 public class MainActivity extends AppCompatActivity {
     ScriptEngineManager mgr;
@@ -32,6 +32,8 @@ public class MainActivity extends AppCompatActivity {
     Button clearBtn, equalsBtn, delBtn;
     EditText currentView;
     TextView answerView;
+
+    String currentValue;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -67,29 +69,41 @@ public class MainActivity extends AppCompatActivity {
      * */
     private void InitializeOperatorButtons() {
         int[] operatorIds = {
-                R.id.multiplyButton, R.id.addButton, R.id.minusButton, R.id.divideButton
+                R.id.multiplyButton, R.id.addButton, R.id.minusButton, R.id.divideButton, R.id.decimalButton, R.id.percentButton, R.id.parenthesisButton
         };
 
         View.OnClickListener operatorClickListener = view -> {
             Button _button = (Button) view;
             String currentValue = currentView.getText().toString();
+            String buttonText = _button.getText().toString();
 
             if (currentValue.isEmpty()) return;
 
             char lastChar = currentValue.charAt(currentValue.length() - 1);
 
-            if ("*+-/x".indexOf(lastChar) != -1) {
+            if ("*+-/x.".indexOf(lastChar) != -1) {
                 return;
             }
 
-            currentView.setText(_button.getText().toString());
+            if(lastChar == '%') return;
+
+            if (buttonText.equals(".")) {
+                String[] number = currentValue.split("[+\\-*()÷×]");
+                String lastNumber = number[number.length - 1];
+
+                if (lastNumber.contains(".")) {
+                    return;
+                }
+            }
+
+            String newValue = currentValue + buttonText;
+            currentView.setText(newValue);
         };
 
         for (int id : operatorIds) {
             findViewById(id).setOnClickListener(operatorClickListener);
         }
     }
-
 
     /**
      * set each on click listener for special buttons
@@ -100,34 +114,40 @@ public class MainActivity extends AppCompatActivity {
     private void InitializeSpecialButtons()
     {
         historyBtn = findViewById(R.id.historyButton);
-        historyBtn.setOnClickListener(view -> {
-            Intent intent = new Intent(MainActivity.this, HistoryActivity.class);
-            startActivity(intent);
+        historyBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(MainActivity.this, HistoryActivity.class);
+                startActivity(intent);
+            }
         });
 
         clearBtn = findViewById(R.id.clearButton);
         clearBtn.setOnClickListener(view -> {
             currentView.setText("");
+            answerView.setText("");
         });
 
         equalsBtn = findViewById(R.id.equalsButton);
         equalsBtn.setOnClickListener(view -> {
-            String currentValue = currentView.getText().toString();
+            currentValue = currentView.getText().toString();
             if(currentValue.isEmpty()) return;
 
             char lastChar = currentValue.charAt(currentValue.length() - 1);
 
-            if ("*+-/x".indexOf(lastChar) != -1) return;
+            if ("*+-÷()×.".indexOf(lastChar) != -1) {
+                Toast.makeText(this, "Invalid", Toast.LENGTH_SHORT).show();
+                return;
+            }
 
-            currentView.setText("");
+            Expression expression = new Expression(currentValue);
+            double result = expression.calculate();
+            String convertedResult = Double.toString(result).contains(".0") ? Integer.toString((int) result) : Double.toString(result);
 
-            Context context = Context.enter();
-            Scriptable scope = context.initStandardObjects();
-            Object result = context.evaluateString(scope, "18 > 17 and 18 < 100", "<cmd>", 1, null);
-            String answerValue = String.valueOf(result);
-            answerView.setText(answerValue);
+            currentView.setText(convertedResult);
+            answerView.setText(convertedResult);
 
-            dbHelper.addToTable(currentValue, answerValue);
+            dbHelper.addToTable(currentValue, convertedResult);
         });
 
         delBtn = findViewById(R.id.deleteButton);
@@ -145,8 +165,6 @@ public class MainActivity extends AppCompatActivity {
      * */
     private void InitializeNumberButtons()
     {
-        int cursorPosition = currentView.getSelectionStart();
-
         int[] numberIds = {
                 R.id.zeroButton, R.id.oneButton, R.id.twoButton, R.id.threeButton, R.id.fourButton, R.id.fiveButton,
                 R.id.sixButton, R.id.sevenButton, R.id.eightButton, R.id.nineButton
@@ -156,7 +174,11 @@ public class MainActivity extends AppCompatActivity {
             Button _button = (Button) view;
             String currentValue = currentView.getText().toString();
             String newValue = currentValue + _button.getText().toString();
+            char lastChar = currentValue.charAt(currentValue.length() - 1);
+            if(lastChar == '%') return;
+
             currentView.setText(newValue);
+
         };
 
         for (int id : numberIds)

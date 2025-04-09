@@ -34,6 +34,7 @@ android {
 dependencies {
     implementation(libs.js.scriptengine)
     implementation(libs.rhino.android)
+    implementation(libs.mxparser)
     implementation(libs.appcompat)
     implementation(libs.material)
     implementation(libs.activity)

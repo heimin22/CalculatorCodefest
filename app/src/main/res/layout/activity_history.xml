@@ -28,7 +28,7 @@
         android:layout_marginTop="35dp">
 
         <ImageButton
-            android:id="@+id/historyButton"
+            android:id="@+id/backButton"
             android:padding="0dp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
